@@ -1,28 +1,19 @@
 #include <SoftwareSerial.h>
-SoftwareSerial mySerial(3, 2); // RX, TX
+SoftwareSerial mySerial(3, 2);
 
-int SYNC = 0x00; // Synchronization byte
 int ACK = 0x04; // Acknowledge byte
 int NACK = 0x02; // Not acknowledge byte
-int payloadLookup []= {1, 2, 4, 8, 16, 32, 0, 0};
-int messageLength = 0;
+
+int SensorDisconnected = 0;
 int lastRefresh = millis();
-int message [34]= {};
-int SerialValue [] = {0,0};
-int color = 0;
-int refreshTime = 1;
-bool checkSumError = false;
-
-
+int SerialValue [] = {0,0,0,0};
+int refreshTime = 300;
 long lastupdate = millis();
+
 void setup() {
   // Open serial communications and wait for port to open:
   Serial.begin(115200);
   mySerial.begin(2400);
-  for (int x=0;x<34;x++){
-    message[x] = x;
-  }
-  delay(50);
   SensorSetup();
   
  
@@ -33,16 +24,27 @@ void loop() {
       SensorMode(2);
       lastRefresh = millis();
     }
-    color = mySerial.read();
-    if(color==-1 && color==0 && color==255){
+    SerialValue[2] = mySerial.read();
+    if(SerialValue[2]==-1 && SerialValue[2]==255){
+      SensorDisconnected ++;
       mySerial.read();
     }
-    if(color!=-1 && color < 8){
+    if(SerialValue[2]!=-1 && SerialValue[2] <= 100 && SerialValue[3]==0){
+      SensorDisconnected = 0;
+      SerialValue[3] = 1;
+      Serial.print(SerialValue[2]);
+      Serial.print("          ");
       Serial.print((millis()-lastupdate));
-      Serial.print("ms          ");
-      Serial.println(color);
+      Serial.println("ms");
       lastupdate = millis();
     }
+    else{
+      SerialValue[3] = 0; 
+    }
+    if(SensorDisconnected > 10){
+      Serial.println("Sensor Disconnected");
+    }
+    
 }
 void SensorSetup(){
   while (true){
