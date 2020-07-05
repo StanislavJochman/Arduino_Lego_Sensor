@@ -74,7 +74,7 @@ void SensorSetup(){
 void SensorMode(int newMode){
   if (newMode <= 5 && newMode >= 0){
     sendMessage(0x44, 0x11);
-    for (int n;n<3;n++){
+    for (int n=0;n<3;n++){
       sendMessage(0x43, newMode & 0x7);
       mySerial.write(NACK);
     }
