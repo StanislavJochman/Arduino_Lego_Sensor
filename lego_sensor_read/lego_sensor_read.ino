@@ -51,15 +51,19 @@ int ReadData(){
 }
 void setMode(String mode){
   Wire.beginTransmission(0x10);
+  //Sensor off
   if(mode == "Off"){
     Wire.write(5);
   }
+  //Light Blue
   else if(mode == "LightB"){
     Wire.write(1);
   }
+  //Light red
   else if(mode == "LightR"){
     Wire.write(0);
   }
+  //Color
   else{
     Wire.write(2);
   }

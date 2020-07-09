@@ -13,23 +13,41 @@ int refreshTime = 30;
 long lastupdate = millis();
 int value = 0;
 uint8_t mode = 2;
+String device = "LS";
 void setup() {
-  Serial.begin(9600);
-  mySerial.begin(2400);
-  SensorSetup();
   Wire.begin(0x10);
-  Timer1.initialize(30000);
-  Timer1.attachInterrupt(ackSend);
+  Serial.begin(9600);
   Wire.onRequest(request);
   Wire.onReceive(receive);
+  pinMode(4,INPUT_PULLUP);
+  pinMode(5,INPUT);
 
+  if(digitalRead(4) == 1){
+    mySerial.begin(2400);
+    SetupLS();
+    Timer1.initialize(30000);
+    Timer1.attachInterrupt(ackSend);
+  }
+  else{
+    device = "BTN";
+  }
+  
 }
 
 void loop() {
-  value = ReadData();
-
+  if(device == "BTN"){
+    value = ReadBTN();
+  }
+  else{
+    value = ReadLS();  
+  }
+  
 }
-int ReadData() {
+int ReadBTN(){
+  return digitalRead(5);
+}
+
+int ReadLS() {
   SerialValue[2] = mySerial.read();
   if (SerialValue[2] == -1 && SerialValue[2] == 255) {
     SensorDisconnected ++;
@@ -60,7 +78,7 @@ int ReadData() {
     SerialValue[3] = 0;
   }
 }
-void SensorSetup() {
+void SetupLS() {
   while (true) {
     int value = mySerial.read();
     if (value == -1 && value == 0 && value == 255) {
@@ -85,7 +103,7 @@ void SensorSetup() {
     }
   }
 }
-void SensorMode(int newMode) {
+void ModeLS(int newMode) {
   if (newMode <= 5 && newMode >= 0) {
     sendMessage(0x44, 0x11);
     for (int n = 0; n < 3; n++) {
@@ -101,7 +119,7 @@ void sendMessage(int cmd, int data) {
   mySerial.write(cSum);
 }
 void ackSend() {
-  SensorMode(mode);
+  ModeLS(mode);
 }
 void request() {
   Wire.write(value);
