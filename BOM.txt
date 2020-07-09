@@ -1,0 +1,7 @@
+button - https://lcsc.com/product-detail/Tactile-Switches_C-K_KSS221GLFS_C-K-KSS221GLFS_C221791.html - 1x
+Atmega328 - https://lcsc.com/product-detail/MICROCHIP_MICROCHIP_ATMEGA328PB-AU_ATMEGA328PB-AU_C132230.html - 1x
+crystal - https://lcsc.com/product-detail/SMD-Crystal-Resonators_ZHUHAI-MONEC-ELEC-ESB16-0000F12M25F_C353715.html - 1x
+22pf cap - https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_Walsin-Tech-Corp-1206N220J500_C152823.html - 2x
+100nf cap - https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C82601.html - 2x
+100uf cap - https://lcsc.com/product-detail/Aluminum-Electrolytic-Capacitors-SMD_100uF-10V_C3347.html -1x
+con - https://lcsc.com/product-detail/Wire-To-Board-Wire-To-Wire-Connector_JST-Sales-America_B4B-XH-A-LF-SN_JST-Sales-America-B4B-XH-A-LF-SN_C144395.html
