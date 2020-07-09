@@ -1,7 +1,7 @@
 #include <SoftwareSerial.h>
 #include <Wire.h>
 #include <TimerOne.h>
-SoftwareSerial mySerial(3, 2);
+SoftwareSerial SensorSerial(3, 2);
 
 int ACK = 0x04;
 int NACK = 0x02;
@@ -13,7 +13,7 @@ int refreshTime = 30;
 long lastupdate = millis();
 int value = 0;
 uint8_t mode = 2;
-String device = "LS";
+bool BTN_used = 0;
 void setup() {
   Wire.begin(0x10);
   Serial.begin(9600);
@@ -21,25 +21,22 @@ void setup() {
   Wire.onReceive(receive);
   pinMode(4,INPUT_PULLUP);
   pinMode(5,INPUT);
-
-  if(digitalRead(4) == 1){
-    mySerial.begin(2400);
-    SetupLS();
-    Timer1.initialize(30000);
-    Timer1.attachInterrupt(ackSend);
-  }
-  else{
-    device = "BTN";
-  }
-  
+  SetupLS();
+  Timer1.initialize(30000);
+  Timer1.attachInterrupt(ackSend);  
 }
 
 void loop() {
-  if(device == "BTN"){
-    value = ReadBTN();
+  if(digitalRead(4) == 1){
+    if(BTN_used == 1){
+      SetupLS(); 
+    }
+    value = ReadLS();
+    BTN_used = 0;
   }
   else{
-    value = ReadLS();  
+    value = ReadBTN();
+    BTN_used = 1;
   }
   
 }
@@ -48,10 +45,10 @@ int ReadBTN(){
 }
 
 int ReadLS() {
-  SerialValue[2] = mySerial.read();
+  SerialValue[2] = SensorSerial.read();
   if (SerialValue[2] == -1 && SerialValue[2] == 255) {
     SensorDisconnected ++;
-    mySerial.read();
+    SensorSerial.read();
   }
   if (SerialValue[2] != -1 && SerialValue[3] == 0) {
     if((mode == 2 || mode == 4) && SerialValue[2] <= 7){
@@ -79,10 +76,12 @@ int ReadLS() {
   }
 }
 void SetupLS() {
+  SensorSerial.end();
+  SensorSerial.begin(2400);
   while (true) {
-    int value = mySerial.read();
+    int value = SensorSerial.read();
     if (value == -1 && value == 0 && value == 255) {
-      mySerial.read();
+      SensorSerial.read();
     }
     if (value != -1) {
       SerialValue[1] = SerialValue[0];
@@ -91,14 +90,14 @@ void SetupLS() {
 
     if (SerialValue[0] == 128 && SerialValue[1] == 144) {
       while (true) {
-        if (mySerial.read() == 4) {
+        if (SensorSerial.read() == 4) {
           break;
         }
       }
-      mySerial.write(ACK);
+      SensorSerial.write(ACK);
       delay(60);
-      mySerial.end();
-      mySerial.begin(57600);
+      SensorSerial.end();
+      SensorSerial.begin(57600);
       break;
     }
   }
@@ -108,15 +107,15 @@ void ModeLS(int newMode) {
     sendMessage(0x44, 0x11);
     for (int n = 0; n < 3; n++) {
       sendMessage(0x43, newMode & 0x7);
-      mySerial.write(NACK);
+      SensorSerial.write(NACK);
     }
   }
 }
 void sendMessage(int cmd, int data) {
   int cSum = 0xff ^ cmd ^ data;
-  mySerial.write(cmd);
-  mySerial.write(data);
-  mySerial.write(cSum);
+  SensorSerial.write(cmd);
+  SensorSerial.write(data);
+  SensorSerial.write(cSum);
 }
 void ackSend() {
   ModeLS(mode);

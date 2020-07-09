@@ -41,7 +41,6 @@ void loop() {
     setMode("Color");
     delay(200);
   }
-  
 }
 
 int ReadData(){
