@@ -5,3 +5,4 @@ crystal - https://lcsc.com/product-detail/SMD-Crystal-Resonators_ZHUHAI-MONEC-EL
 100nf cap - https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C82601.html - 2x
 100uf cap - https://lcsc.com/product-detail/Aluminum-Electrolytic-Capacitors-SMD_100uF-10V_C3347.html -1x
 con - https://lcsc.com/product-detail/Wire-To-Board-Wire-To-Wire-Connector_JST-Sales-America_B4B-XH-A-LF-SN_JST-Sales-America-B4B-XH-A-LF-SN_C144395.html
+RJ12 - https://www.ebay.com/itm/10x-RJ12-6P6C-Connector-Sockets-for-Lego-NXT-EV3/232914839810?hash=item363ace6902:g:yy8AAOSwYmZXGr2N - 1
