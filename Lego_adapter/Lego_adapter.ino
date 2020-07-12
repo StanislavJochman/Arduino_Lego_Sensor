@@ -18,11 +18,28 @@ bool BTN_used = 0;
 int address = EEPROM.read(0);
 void setup() {
   pinMode(A1,INPUT_PULLUP);
-  if(digitalRead(A1)==0){
-    address = 0x00;
-  }
-  Wire.begin(0x10);
+  pinMode(A0,OUTPUT);
+  digitalWrite(A0,LOW);
   Serial.begin(9600);
+  Serial.println("Firmware version 1.0");
+  if(digitalRead(A1)==0){
+    Wire.begin(0x03);
+    address = 0x03;
+    digitalWrite(A0,HIGH);
+    Wire.onReceive(receiveAddr);
+    Serial.println("Waiting for adress change. Current address 0x03.");
+    Serial.println("Waiting for address");
+    while (address == 0x03){
+      digitalWrite(A0,HIGH);
+      delay(100);
+      digitalWrite(A0,LOW);
+      delay(900);
+    }
+    Serial.print("Address sucessfuly set to 0X");
+    Serial.println(address);
+    Serial.println(". You can now press disconnect jumper Addr and press switch SW.");
+  }
+  Wire.begin(address);
   Wire.onRequest(request);
   Wire.onReceive(receive);
   pinMode(4,INPUT_PULLUP);
@@ -132,4 +149,8 @@ void request() {
 }
 void receive() {
   mode = Wire.read();
+}
+void receiveAddr(){
+ address = (Wire.read() | Wire.read() << 8);
+ EEPROM.write(0, address);
 }
