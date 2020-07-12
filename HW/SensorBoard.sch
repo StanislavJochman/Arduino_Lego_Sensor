@@ -11257,14 +11257,14 @@ Source: www.kingbright.com</description>
 </class>
 </classes>
 <parts>
-<part name="JP1" library="Cing Library" library_urn="urn:adsk.eagle:library:10154637" deviceset="ICSP_HEADER" device="" package3d_urn="urn:adsk.eagle:package:10154740/1"/>
+<part name="JP1" library="Cing Library" library_urn="urn:adsk.eagle:library:10154637" deviceset="ICSP_HEADER" device="" package3d_urn="urn:adsk.eagle:package:10154740/1" override_package3d_urn="urn:adsk.eagle:package:10154740/2" override_package_urn="urn:adsk.eagle:footprint:10154704/1"/>
 <part name="U$1" library="Cing Library" library_urn="urn:adsk.eagle:library:10154637" deviceset="LEGO-1X1" device="" package3d_urn="urn:adsk.eagle:package:10154720/1"/>
-<part name="U$2" library="Cing Library" library_urn="urn:adsk.eagle:library:10154637" deviceset="OPENSOURCE" device="" package3d_urn="urn:adsk.eagle:package:10154747/1"/>
-<part name="U1" library="SparkFun-IC-Microcontroller" library_urn="urn:adsk.eagle:library:525" deviceset="ATMEGA328P_TQFP" device="" package3d_urn="urn:adsk.eagle:package:38945/1" value="ATMEGA328P_TQFP"/>
+<part name="U$2" library="Cing Library" library_urn="urn:adsk.eagle:library:10154637" deviceset="OPENSOURCE" device="" package3d_urn="urn:adsk.eagle:package:10154747/1" override_package3d_urn="urn:adsk.eagle:package:10154747/2" override_package_urn="urn:adsk.eagle:footprint:10154709/1"/>
+<part name="U1" library="SparkFun-IC-Microcontroller" library_urn="urn:adsk.eagle:library:525" deviceset="ATMEGA328P_TQFP" device="" package3d_urn="urn:adsk.eagle:package:38945/1" override_package3d_urn="urn:adsk.eagle:package:21788188/2" override_package_urn="urn:adsk.eagle:footprint:38853/1" value="ATMEGA328P_TQFP"/>
 <part name="U$3" library="Cing Library" library_urn="urn:adsk.eagle:library:10154637" deviceset="LEGO-1X1" device="" package3d_urn="urn:adsk.eagle:package:10154720/1"/>
-<part name="U$4" library="Cing Library" library_urn="urn:adsk.eagle:library:10154637" deviceset="LEGO-1X1" device="" package3d_urn="urn:adsk.eagle:package:10154720/1"/>
+<part name="U$4" library="Cing Library" library_urn="urn:adsk.eagle:library:10154637" deviceset="LEGO-1X1" device="" package3d_urn="urn:adsk.eagle:package:10154720/1" override_package3d_urn="urn:adsk.eagle:package:10154720/2" override_package_urn="urn:adsk.eagle:footprint:10154695/1"/>
 <part name="U$5" library="Cing Library" library_urn="urn:adsk.eagle:library:10154637" deviceset="LEGO-1X1" device="" package3d_urn="urn:adsk.eagle:package:10154720/1"/>
-<part name="RJ12" library="con-rj" deviceset="RJ12" device=""/>
+<part name="RJ12" library="con-rj" deviceset="RJ12" device="" override_package3d_urn="urn:adsk.eagle:package:21788151/2" override_package_urn="urn:adsk.eagle:footprint:21788154/1"/>
 <part name="C1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C1206" package3d_urn="urn:adsk.eagle:package:23618/2" value="100nf"/>
 <part name="R1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="M1206" package3d_urn="urn:adsk.eagle:package:23566/2" value="10K"/>
 <part name="P+1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
@@ -11285,7 +11285,7 @@ Source: www.kingbright.com</description>
 <part name="P+6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="GND7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="P+7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
-<part name="SW" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="SWITCH_PUSHBUTTON" device="C&amp;K_KSS" package3d_urn="urn:adsk.eagle:package:6240958/1"/>
+<part name="SW" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="SWITCH_PUSHBUTTON" device="C&amp;K_KSS" package3d_urn="urn:adsk.eagle:package:6240958/1" override_package3d_urn="urn:adsk.eagle:package:21788201/2" override_package_urn="urn:adsk.eagle:footprint:6240315/1"/>
 <part name="GND8" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="I2C" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2"/>
 <part name="P+8" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
@@ -11298,7 +11298,7 @@ Source: www.kingbright.com</description>
 <part name="U$9" library="Cing Library" library_urn="urn:adsk.eagle:library:10154637" deviceset="LEGO-1X1" device="" package3d_urn="urn:adsk.eagle:package:10154720/1"/>
 <part name="GND12" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="UART" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device="" package3d_urn="urn:adsk.eagle:package:22407/2"/>
-<part name="SW1" library="SparkFun-Switches" library_urn="urn:adsk.eagle:library:535" deviceset="MOMENTARY-SWITCH-SPST-2" device="-SMD-5.2MM" package3d_urn="urn:adsk.eagle:package:40167/1"/>
+<part name="SW1" library="SparkFun-Switches" library_urn="urn:adsk.eagle:library:535" deviceset="MOMENTARY-SWITCH-SPST-2" device="-SMD-5.2MM" package3d_urn="urn:adsk.eagle:package:40167/1" override_package3d_urn="urn:adsk.eagle:package:21788192/2" override_package_urn="urn:adsk.eagle:footprint:40111/1"/>
 <part name="C5" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C1206" package3d_urn="urn:adsk.eagle:package:23618/2" value="100uf"/>
 <part name="P+11" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="GND13" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -11900,6 +11900,11 @@ will not be understood (or retained) with this version.
 Since Version 8.3, EAGLE supports the association of 3D packages
 with devices in libraries, schematics, and board files. Those 3D
 packages will not be understood (or retained) with this version.
+</note>
+<note version="9.4" severity="warning">
+Since Version 9.4, EAGLE supports the overriding of 3D packages
+in schematics and board files. Those overridden 3d packages
+will not be understood (or retained) with this version.
 </note>
 <note version="8.4" severity="warning">
 Since Version 8.4, EAGLE supports properties for SPICE simulation. 
