@@ -1,6 +1,7 @@
 #include <SoftwareSerial.h>
 #include <Wire.h>
 #include <TimerOne.h>
+#include <EEPROM.h>
 SoftwareSerial SensorSerial(3, 2);
 
 int ACK = 0x04;
@@ -14,7 +15,12 @@ long lastupdate = millis();
 int value = 0;
 uint8_t mode = 2;
 bool BTN_used = 0;
+int address = EEPROM.read(0);
 void setup() {
+  pinMode(A1,INPUT_PULLUP);
+  if(digitalRead(A1)==0){
+    address = 0x00;
+  }
   Wire.begin(0x10);
   Serial.begin(9600);
   Wire.onRequest(request);
