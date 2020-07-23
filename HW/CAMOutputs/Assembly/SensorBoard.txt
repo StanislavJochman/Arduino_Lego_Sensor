@@ -1,4 +1,4 @@
-Partlist exported from /home/stanley/git_workspace/Arduino_Lego_Sensor/HW/SensorBoard.sch at 7/12/20 5:07 PM
+Partlist exported from /home/stanley/git_workspace/Arduino_Lego_Sensor/HW/SensorBoard.sch at 7/23/20 5:14 PM
 
 Qty Value            Device                            Package                  Parts                             Description                                         CRAETED_BY    CREATED_BY    DIGIKEY_PART_NUMBER MANUFACTURER    MPN              PACKAGE POPULARITY PROD_ID    SF_SKU    SPICEPREFIX VALUE          
 1                    ICSP_HEADER                       ICSP_HEADER              JP1                               Arduino ICSP I/O Header                                                                                                                                                                                 
